@@ -14,6 +14,16 @@ public class PlayerCharacterController : MonoBehaviour {
 		_Input = ReInput.players.GetPlayer (0);
 		rb = GetComponent<Rigidbody> ();
 		_anim = GetComponent<Animator> ();
+	public PlayerNumber playerNumber;
+	[SerializeField]float verticalSpeed = 700;
+	[SerializeField]float horizontalSpeed = 350;
+
+    void Start () 
+	{
+
+		Debug.Log((int) playerNumber);
+		_Input = ReInput.players.GetPlayer ((int) playerNumber);
+		rb = GetComponent <Rigidbody>();
 	}
 
 	void Update () {
@@ -30,12 +40,15 @@ public class PlayerCharacterController : MonoBehaviour {
 		bool _tongueGrab = _Input.GetButton ("TongueGrab");
 		bool _tonguePunch = _Input.GetButton ("TonguePunch");
 
+		Vector3 MotionVector = Vector3.zero;
+
 		if (_h != 0) {
 			Debug.Log ("Horizontal Axis: " + _h);
-			rb.AddForce (new Vector3 (_h * verticalSpeed * Time.deltaTime, 0, 0), ForceMode.Force);
+			MotionVector = new Vector3(_h * verticalSpeed * Time.deltaTime, MotionVector.y,MotionVector.z);
 		}
 		if (_v != 0) {
 			Debug.Log ("Vertical Axis: " + _v);
+			MotionVector = new Vector3(MotionVector.x, MotionVector.y, _v * horizontalSpeed * Time.deltaTime);
 		}
 		if (_hL != 0) {
 			Debug.Log ("Horizontal Look Axis: " + _hL);
@@ -78,5 +91,19 @@ public class PlayerCharacterController : MonoBehaviour {
 			else {
 			_anim.SetBool ("TonguePunch", false);
 		}
+
+		Move(MotionVector);
 	}
+	private void Move(Vector3 InputVector){
+		rb.AddForce(InputVector,ForceMode.VelocityChange);
+	}
+}
+
+
+[System.Serializable]
+public enum PlayerNumber{
+	one = 0,
+	two = 1,
+	three = 2,
+	four = 3
 }
