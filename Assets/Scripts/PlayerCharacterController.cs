@@ -2,14 +2,17 @@
 using System.Collections.Generic;
 using Rewired;
 using UnityEngine;
-
-public class GameManager : MonoBehaviour {
+[RequireComponent(typeof(Rigidbody))]
+public class PlayerCharacterController : MonoBehaviour {
 
 	Player _Input;
+	Rigidbody rb;
+	[SerializeField]float verticalSpeed = 1;
 
 	void Start () 
 	{
 		_Input = ReInput.players.GetPlayer (0);
+		rb = GetComponent <Rigidbody>();
 	}
 
 	void Update ()
@@ -28,6 +31,7 @@ public class GameManager : MonoBehaviour {
 
 		if (_h != 0) {
 			Debug.Log ("Horizontal Axis: " + _h);
+			rb.AddForce(new Vector3(_h * verticalSpeed * Time.deltaTime, 0, 0),ForceMode.Force);
 		}
 		if (_v != 0) {
 			Debug.Log ("Vertical Axis: " + _v);
