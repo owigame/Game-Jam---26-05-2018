@@ -2,21 +2,21 @@
 using System.Collections.Generic;
 using Rewired;
 using UnityEngine;
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent (typeof (Rigidbody))]
 public class PlayerCharacterController : MonoBehaviour {
 
 	Player _Input;
 	Rigidbody rb;
-	[SerializeField]float verticalSpeed = 1;
+	Animator _anim;
+	[SerializeField] float verticalSpeed = 1;
 
-	void Start () 
-	{
+	void Start () {
 		_Input = ReInput.players.GetPlayer (0);
-		rb = GetComponent <Rigidbody>();
+		rb = GetComponent<Rigidbody> ();
+		_anim = GetComponent<Animator> ();
 	}
 
-	void Update ()
-	{
+	void Update () {
 		//Axes
 		float _h = _Input.GetAxis ("Horizontal");
 		float _v = _Input.GetAxis ("Vertical");
@@ -24,14 +24,15 @@ public class PlayerCharacterController : MonoBehaviour {
 		float _vL = _Input.GetAxis ("Vertical Look");
 
 		//Button Input
-		bool _kick = _Input.GetButton ("Kick");
-		bool _chop = _Input.GetButton ("Chop");
+		bool _Lowkick = _Input.GetButton ("LowKick");
+		bool _HighKick = _Input.GetButton ("HighKick");
+		bool _Punch = _Input.GetButton ("Punch");
 		bool _tongueGrab = _Input.GetButton ("TongueGrab");
 		bool _tonguePunch = _Input.GetButton ("TonguePunch");
 
 		if (_h != 0) {
 			Debug.Log ("Horizontal Axis: " + _h);
-			rb.AddForce(new Vector3(_h * verticalSpeed * Time.deltaTime, 0, 0),ForceMode.Force);
+			rb.AddForce (new Vector3 (_h * verticalSpeed * Time.deltaTime, 0, 0), ForceMode.Force);
 		}
 		if (_v != 0) {
 			Debug.Log ("Vertical Axis: " + _v);
@@ -42,17 +43,40 @@ public class PlayerCharacterController : MonoBehaviour {
 		if (_vL != 0) {
 			Debug.Log ("Vertical Look Axis: " + _vL);
 		}
-		if (_kick) {
-			Debug.Log ("Kick Button");
+		if (_Lowkick == true) {
+			Debug.Log ("LowKick Button");
+			_anim.SetBool ("LowKick", true);
+		} 
+		else {
+			_anim.SetBool ("LowKick", false);
 		}
-		if (_chop) {
-			Debug.Log ("Chop Button");
+		if (_HighKick == true) {
+			Debug.Log ("HighKick Button");
+			_anim.SetBool ("HighKick", true);
 		}
-		if (_tongueGrab) {
+		else {
+			_anim.SetBool ("HighKick", false);
+		}
+		if (_Punch == true) {
+			Debug.Log ("Punch Button");
+			_anim.SetBool ("Punch", true);
+		}
+			else {
+			_anim.SetBool ("Punch", false);
+		}
+		if (_tongueGrab == true) {
 			Debug.Log ("Tongue Grab Button");
+			_anim.SetBool ("TongueGrab", true);
 		}
-		if (_tonguePunch) {
+		else {
+			_anim.SetBool ("TongueGrab", false);
+		}
+		if (_tonguePunch == true) {
 			Debug.Log ("Tongue Punch Button");
+			_anim.SetBool ("TonguePunch", true);
+		}
+			else {
+			_anim.SetBool ("TonguePunch", false);
 		}
 	}
 }
