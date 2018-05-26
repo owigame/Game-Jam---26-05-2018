@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114734563993159346}
   - component: {fileID: 114271791136416328}
   - component: {fileID: 136315476367077378}
+  - component: {fileID: 95103827065456362}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Player
@@ -58,7 +59,6 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
   m_Materials:
   - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
   m_StaticBatchInfo:
@@ -102,6 +102,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!95 &95103827065456362
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1994659143474686}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: d9d5ffadcd9b13c429d23e9e15b36a37, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &114271791136416328
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,6 +145,7 @@ MonoBehaviour:
   playerNumber: 0
   verticalSpeed: 20
   horizontalSpeed: 20
+  jumpHeight: 1000
 --- !u!136 &136315476367077378
 CapsuleCollider:
   m_ObjectHideFlags: 1
