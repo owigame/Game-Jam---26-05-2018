@@ -8,22 +8,17 @@ public class PlayerCharacterController : MonoBehaviour {
 	Player _Input;
 	Rigidbody rb;
 	Animator _anim;
-	[SerializeField] float verticalSpeed = 1;
+public PlayerNumber playerNumber;
 
-	void Start () {
-		_Input = ReInput.players.GetPlayer (0);
-		rb = GetComponent<Rigidbody> ();
-		_anim = GetComponent<Animator> ();
-	public PlayerNumber playerNumber;
-	[SerializeField]float verticalSpeed = 700;
+	[SerializeField] float verticalSpeed = 1;
 	[SerializeField]float horizontalSpeed = 350;
 
-    void Start () 
-	{
 
+	void Start () {
 		Debug.Log((int) playerNumber);
+		rb = GetComponent<Rigidbody> ();
+		_anim = GetComponent<Animator> ();
 		_Input = ReInput.players.GetPlayer ((int) playerNumber);
-		rb = GetComponent <Rigidbody>();
 	}
 
 	void Update () {
