@@ -7,11 +7,13 @@ public class GameManager : MonoBehaviour {
 
 	Player _Input;
 
-	void Start () {
+	void Start () 
+	{
 		_Input = ReInput.players.GetPlayer (0);
 	}
 
-	void Update () {
+	void Update ()
+	{
 		//Axes
 		float _h = _Input.GetAxis ("Horizontal");
 		float _v = _Input.GetAxis ("Vertical");
