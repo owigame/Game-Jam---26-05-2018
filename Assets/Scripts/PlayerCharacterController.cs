@@ -65,7 +65,7 @@ public class PlayerCharacterController : MonoBehaviour {
 		Move(MotionVector);
 	}
 	private void Move(Vector3 InputVector){
-		rb.AddForce(InputVector,ForceMode.Force);
+		rb.AddForce(InputVector,ForceMode.VelocityChange);
 	}
 }
 
