@@ -8,11 +8,14 @@ public class PlayerCharacterController : MonoBehaviour {
 	Player _Input;
 	Rigidbody rb;
 	Animator _anim;
+	[SerializeField] float RayD;
+	[SerializeField] LayerMask Layer;
 	public PlayerNumber playerNumber;
 
 	[SerializeField] float verticalSpeed = 1;
 	[SerializeField] float horizontalSpeed = 350;
 	[SerializeField] float jumpHeight = 1000;
+	bool _grounded = true;
 
 	void Start () {
 		Debug.Log ((int) playerNumber);
@@ -52,12 +55,20 @@ public class PlayerCharacterController : MonoBehaviour {
 		if (_vL != 0) {
 			Debug.Log ("Vertical Look Axis: " + _vL);
 		}
-		if (_jump == true) {
+		if (_jump == true && _grounded == true) {
 			Debug.Log ("Jump Button");
 			_anim.SetBool ("Jump", true);
-			MotionVector = new Vector3 (MotionVector.x,jumpHeight * Time.deltaTime, MotionVector.z);
-		} else {
-			_anim.SetBool ("Jump", false);
+			MotionVector = new Vector3 (MotionVector.x, jumpHeight * Time.deltaTime, MotionVector.z);
+			_grounded = false;
+		}
+		if (_grounded == false) {
+			RaycastHit hit;
+			Debug.DrawRay (transform.position, -transform.up * RayD,Color.green,1);
+			Physics.Raycast (transform.position, -transform.up, out hit, RayD, Layer);
+			if (hit.collider != null) {
+				_grounded = true;
+				_anim.SetBool ("Jump", false);
+			}
 		}
 		if (_Lowkick == true) {
 			Debug.Log ("LowKick Button");
