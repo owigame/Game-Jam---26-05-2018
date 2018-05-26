@@ -43,11 +43,15 @@ public class PlayerCharacterController : MonoBehaviour {
 
 		if (_h != 0) {
 			MotionVector = new Vector3 (_h * verticalSpeed * Time.deltaTime, MotionVector.y, MotionVector.z);
-		}
-		if (_v != 0) {
+            _anim.SetFloat("speedH",_h);
+
+        }
+        if (_v != 0) {
 			MotionVector = new Vector3 (MotionVector.x, MotionVector.y, _v * horizontalSpeed * Time.deltaTime);
-		}
-		if (_jump == true && _grounded == true) {
+            _anim.SetFloat("speedV", _v);
+
+        }
+        if (_jump == true && _grounded == true) {
 			_anim.SetBool ("Jump", true);
 			MotionVector = new Vector3 (MotionVector.x, jumpHeight * Time.deltaTime, MotionVector.z);
 			_grounded = false;
@@ -61,30 +65,20 @@ public class PlayerCharacterController : MonoBehaviour {
 			}
 		}
 		if (_Lowkick == true) {
-			_anim.SetBool ("LowKick", true);
-		} else {
-			_anim.SetBool ("LowKick", false);
+			_anim.SetTrigger ("LowKick");
 		}
 		if (_HighKick == true) {
-			_anim.SetBool ("HighKick", true);
-		} else {
-			_anim.SetBool ("HighKick", false);
+			_anim.SetTrigger ("HighKick");
 		}
 		if (_Punch == true) {
-			_anim.SetBool ("Punch", true);
-		} else {
-			_anim.SetBool ("Punch", false);
-		}
+			_anim.SetTrigger ("Punch");
+		} 
 		if (_tongueGrab == true) {
-			_anim.SetBool ("TongueGrab", true);
-		} else {
-			_anim.SetBool ("TongueGrab", false);
-		}
+			_anim.SetTrigger ("TongueGrab");
+		} 
 		if (_tonguePunch == true) {
-			_anim.SetBool ("TonguePunch", true);
-		} else {
-			_anim.SetBool ("TonguePunch", false);
-		}
+			_anim.SetTrigger ("TonguePunch");
+		} 
 
 		Move (MotionVector);
 	}

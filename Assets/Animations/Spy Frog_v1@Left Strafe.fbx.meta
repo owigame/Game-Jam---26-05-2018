@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: b71a12842ff352b4983107801d2b96f8
+guid: c171d78c7be108b43929bc82f653d045
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
@@ -105,9 +105,9 @@ ModelImporter:
     400096: mixamorig:Spine1
     400098: mixamorig:Spine2
     400100: //RootNode
-    2100000: Material
+    2100000: Material.001
     4300000: Cube
-    7400000: mixamo.com
+    7400000: Left Strafe
     9500000: //RootNode
     13700000: Cube
     2186277476908879412: ImportLogs
@@ -124,7 +124,12 @@ ModelImporter:
     optimizeGameObjects: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Copied Avatar Rig Configuration mis-match. Bone length in
+      copied configuration does not match position in animation file:\n\t'mixamorig:LeftUpLeg'
+      : position error = 3.788629 mm\n\t'mixamorig:LeftLeg' : position error = 13.163721
+      mm\n\t'mixamorig:LeftFoot' : position error = 7.831882 mm\n\t'mixamorig:RightUpLeg'
+      : position error = 3.789439 mm\n\t'mixamorig:RightLeg' : position error = 13.233706
+      mm\n\t'mixamorig:RightFoot' : position error = 7.733674 mm\n"
     animationImportErrors: 
     animationImportWarnings: "\nClip 'mixamo.com' has import animation warnings that
       might lower retargeting quality:\nNote: Activate translation DOF on avatar to
@@ -141,7 +146,35 @@ ModelImporter:
     animationWrapMode: 0
     extraExposedTransformPaths: []
     extraUserProperties: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Left Strafe
+      takeName: mixamo.com
+      firstFrame: 0
+      lastFrame: 20
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask: []
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
     isReadable: 1
   meshes:
     lODScreenPercentages: []
