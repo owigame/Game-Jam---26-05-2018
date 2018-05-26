@@ -14,7 +14,7 @@ public class CameraPositionSet : MonoBehaviour {
     {
         if(SetCameraInPositios == true)
         {
-            CurrentPositionInTime += Time.deltaTime;
+            CurrentPositionInTime += 0.5f * Time.deltaTime;
             CameraPosition.transform.position = Vector3.Lerp(CameraPosition.position, CameraMoveToPosition.position, CurrentPositionInTime);
         }
 
