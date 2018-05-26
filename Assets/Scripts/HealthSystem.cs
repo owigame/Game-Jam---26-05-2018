@@ -11,11 +11,7 @@ public float health = 100;
 	public void increaseHealth (float amount){
 	health += amount;
 	}
-	void Start () {
-	}
 	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+
 }
